@@ -1,3 +1,5 @@
+$mobile-breakpoint: 768px;
+
 * {
     box-sizing: border-box;
 }
@@ -76,7 +78,7 @@ footer {
                     &:hover {
                         background-color: rgba($color: #000, $alpha: .5);
                         color: rgba($color: #fff, $alpha: 1);
-                        ;
+
                     }
 
                     border-right: 1px solid $secondary;
@@ -92,12 +94,30 @@ footer {
             }
         }
     }
+
+    @media (max-width: $mobile-breakpoint) {
+        nav {
+            flex-direction: column;
+
+            ul {
+                flex-direction: column;
+
+                li {
+                    a {
+                        border-left: 1px solid $secondary;
+                        border-bottom: 1px solid $secondary;
+
+                    }
+                }
+            }
+        }
+    }
 }
 
 textarea {
     background-color: #121212;
     font-size: 1.2rem;
-    
+
     &:focus {
         outline: none;
         box-shadow: none;
