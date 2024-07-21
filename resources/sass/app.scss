@@ -72,7 +72,7 @@ footer {
                     font-size: .9rem;
                     color: rgba($color: #fff, $alpha: .5);
 
-                    border-right: 1px $secondary ;
+                    border-right: 1px solid $secondary;
 
                     &.active,
                     &:hover {
@@ -81,7 +81,6 @@ footer {
 
                     }
 
-                    border-right: 1px solid $secondary;
 
                 }
 
@@ -106,7 +105,6 @@ footer {
                     a {
                         border-left: 1px solid $secondary;
                         border-bottom: 1px solid $secondary;
-
                     }
                 }
             }
