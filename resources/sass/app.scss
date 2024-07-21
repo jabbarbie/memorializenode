@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    background-color: #0F0F0F;
+
+    color: CanvasText;
+    color-scheme: light dark;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-rows: max-content auto max-content;
+    height: 100vh;
+}
+
+header {
+    padding: 0 1rem;
+}
+
+main {
+    padding: 1rem;
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+
+        .box {
+            background-color: #1F1F1F;
+            border: 1px solid $secondary;
+            padding: 1rem;
+        }
+    }
+}
+
+footer {
+    border-top: 1px solid $secondary;
+    background-color: rgba($color: #000, $alpha: .2);
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+
+        ul {
+            display: flex;
+            margin: 0;
+            padding: 0 .9rem;
+            list-style: none;
+
+            li {
+                a {
+                    display: block;
+                    color: inherit;
+                    font-size: inherit;
+                    text-decoration: none;
+                    padding: .8rem 1rem;
+
+                    font-size: .9rem;
+                    color: rgba($color: #fff, $alpha: .5);
+
+                    border-right: 1px $secondary ;
+
+                    &.active,
+                    &:hover {
+                        background-color: rgba($color: #000, $alpha: .5);
+                        color: rgba($color: #fff, $alpha: 1);
+                        ;
+                    }
+
+                    border-right: 1px solid $secondary;
+
+                }
+
+
+                &:first-child {
+                    a {
+                        border-left: 1px solid $secondary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+textarea {
+    background-color: #121212;
+    font-size: 1.2rem;
+    
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+}
+
+.text-primary {
+    color: yellow;
+}
+
+.box__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+}
+
+.box__footer {
+    text-align: right;
+    padding: .5rem 0;
+    color: $secondary;
+    font-size: .8rem;
+}
