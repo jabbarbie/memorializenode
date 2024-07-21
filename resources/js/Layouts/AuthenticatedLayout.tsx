@@ -27,7 +27,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
         <div id="wrapper">
             <header>
                 {!route().current('dashboard') &&
-                    <h1>{header && header?.props.children}</h1>
+                    <h1>{route().current('dashboard')}</h1>
                 }
             </header>
             <main>{children}</main>
