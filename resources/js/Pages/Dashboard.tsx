@@ -49,7 +49,8 @@ export default function Dashboard({ auth, note }: MainProps) {
 
                     <h3>Notes</h3>
                     <textarea
-                        rows={30}
+                        className='home__textarea'
+                        // rows={30}
                         spellCheck="false"
                         value={content}
                         autoFocus={true}

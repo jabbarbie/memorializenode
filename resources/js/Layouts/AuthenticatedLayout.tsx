@@ -34,11 +34,11 @@ export default function Authenticated({ user, header, children }: PropsWithChild
             <footer>
                 <nav>
                     <ul>
-                        <li><a href="" className={`${route().current('dashboard') ? 'active' : null}`}>Dasboard</a></li>
+                        <li><a href="/" className={`${route().current('dashboard') ? 'active' : null}`}>Dasboard</a></li>
                         <li><a href="">Scrum</a></li>
                         <li><a href="">Task</a></li>
                         <li><a href="">Project</a></li>
-                        <li><a href="">Notes</a></li>
+                        <li><a href="/notes" className={`${route().current('notes.*') ? 'active' : null}`}>Notes</a></li>
                     </ul>
                     <ul>
                         <li><a href="" >{currentTime.format('dddd, D MMMM YYYY')}</a></li>

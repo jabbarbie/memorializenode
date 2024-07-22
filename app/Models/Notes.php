@@ -17,4 +17,5 @@ class Notes extends Model
     {
         return Carbon::parse($this->updated_at)->format('Y');
     }
+
 }

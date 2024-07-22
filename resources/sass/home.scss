@@ -7,9 +7,53 @@
     .home__main {
         width: 100%;
 
+        .home__grid {
+            padding-top: 2rem;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            .box {
+                color: $secondary_50;
+                border: 1px solid $secondary;
+                padding: 1rem;
+                transition: all .2s;
+
+                .box__header {
+                    border-bottom: 1px solid $secondary;
+                    padding-bottom: .5rem;
+                }
+
+                .box__body {
+                    padding-top: .5rem;
+                }
+
+                &:hover {
+                    color: white;
+                    border: 1px solid white;
+                    cursor: pointer;
+
+                    .box__header {
+                        border-bottom: 1px solid white;
+
+                    }
+                }
+            }
+
+            
+            @media (max-width: $mobile-breakpoint) {
+                grid-template-columns: 1fr;
+            }            
+        }
+
         textarea {
             width: 100%;
+            min-height: 80vh;
             padding: 1rem;
+
+            @media (max-width: $mobile-breakpoint) {
+                min-height: 50vh;
+            }
         }
     }
 

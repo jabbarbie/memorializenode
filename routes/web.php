@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,8 @@ use Inertia\Inertia;
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::post('/{note}/store_note', [HomeController::class, 'store_note']);
+
+    Route::resource('/notes', NoteController::class)->only(['index']);
 });
 
 // Route::get('/dashboard', function () {
