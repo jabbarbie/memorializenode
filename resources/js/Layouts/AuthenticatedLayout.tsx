@@ -7,7 +7,26 @@ import { Link } from '@inertiajs/react';
 import { User } from '@/types';
 import '../../sass/app.scss';
 import moment from 'moment';
+import { ToastContainer, toast } from 'react-toastify';
 import 'moment/locale/id';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+const dayList = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
+const monthList = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+];
 
 export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -23,9 +42,13 @@ export default function Authenticated({ user, header, children }: PropsWithChild
         return () => clearInterval(intervalId);
     }, []);
 
+
+    const fullTime = (dayList[moment().day()]) + ", " + (moment().date()) + " " + (monthList[(moment().month())]) + " " + (moment().year())
+    
     return (
         <div id="wrapper">
             <header>
+                <ToastContainer />
                 {!route().current('dashboard') &&
                     <h1>{route().current('dashboard')}</h1>
                 }
@@ -40,8 +63,8 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                         <li><a href="">Project</a></li>
                         <li><a href="/notes" className={`${route().current('notes.*') ? 'active' : null}`}>Notes</a></li>
                     </ul>
-                    <ul>
-                        <li><a href="" >{currentTime.format('dddd, D MMMM YYYY')}</a></li>
+                    <ul className='hide_mobile'>
+                        <li><a href="" >{fullTime}</a></li>
                         <li><a href="" className='active'>{currentTime.format('HH:mm:ss')}</a></li>
                     </ul>
                 </nav>

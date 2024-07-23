@@ -20,7 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::post('/{note}/store_note', [HomeController::class, 'store_note']);
 
-    Route::resource('/notes', NoteController::class)->only(['index']);
+    Route::resource('/notes', NoteController::class)->only(['index','show']);
 });
 
 // Route::get('/dashboard', function () {

@@ -5,6 +5,7 @@ import '../../sass/home.scss'
 import axios from 'axios';
 
 import { useState } from 'react';
+import { formatText } from '@/helper';
 
 interface Note {
     id: number
@@ -18,35 +19,30 @@ interface MainProps {
     auth: {
         user: User
     }
-    notes: {
-        data: Note[]
+    note: {
+        data: Note
     }
 }
 
-export default function Note({ auth, notes }: MainProps) {
-    console.log(notes.data)
+export default function NoteShow({ auth, note }: MainProps) {
+    console.log(note.data)
 
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Note</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Note {note.data.created_at}</h2>}
         >
             <Head title="Note" />
             <div id="home__wrapper">
                 <div className='home__header'>
-                    <h3>Note</h3>
-                    <div className='home__header_right'>
-                        <input type='text' placeholder='Ketik sesuatu' autoFocus />
-                    </div>
+                    <h3><a href='/notes'>	&lt; </a>Detail Note </h3>
+                    <h3>{note.data.created_at}</h3>
                 </div>
-                <div className='home__main'>
+                <div className='home__main_full'>
                     <div className="home__grid">
-                        {notes.data.map((d) => (
-                            <a className='box' role='button' href={`/notes/${d.id}`}>
-                                <div className="box__header">{d.created_at}</div>
-                                <div className="box__body">{d.name}</div>
-                            </a>
-                        ))}
+                        <div id="display" className='textarea__preview'>
+                            {formatText(note.data.name)}
+                        </div>
                     </div>
                 </div>
 

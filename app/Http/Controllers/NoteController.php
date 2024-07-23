@@ -17,4 +17,11 @@ class NoteController extends Controller
             'notes'  => NoteResource::collection($notes)
         ]);
     }
+
+    public function show(Notes $note)
+    {
+        return Inertia::render('NoteShow', [
+            'note'  => new NoteResource($note)
+        ]);
+    }
 }

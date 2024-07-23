@@ -122,6 +122,7 @@ footer {
 textarea {
     background-color: #121212;
     font-size: 1.2rem;
+    font-family: "Roboto";
 
     &:focus {
         outline: none;
@@ -146,4 +147,10 @@ textarea {
     padding: .5rem 0;
     color: $secondary;
     font-size: .8rem;
+}
+
+.hide_mobile {
+    @media (max-width: $mobile-breakpoint) {
+        display: none;
+    }
 }

@@ -3,8 +3,10 @@ import { Head } from '@inertiajs/react';
 import { PageProps, User } from '@/types';
 import '../../sass/home.scss'
 import axios from 'axios';
+import { useEffect, useRef, useState } from 'react';
+import { Bounce, Flip, ToastContainer, toast } from 'react-toastify';
+import { formatText } from '@/helper';
 
-import { useState } from 'react';
 
 interface Note {
     id: number
@@ -21,21 +23,95 @@ interface MainProps {
 }
 
 export default function Dashboard({ auth, note }: MainProps) {
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [content, setContent] = useState(note.name);
+    const [changed, setChanged] = useState<boolean>(false)
+    const [preview, setPreview] = useState<boolean>(true)
+
+    const [typedCount, setTypedCount] = useState<number>(0)
+    const [lastWord, setLastWord] = useState<string>("")
 
     const handleChange = (e: any) => {
+        setTypedCount((_old) => _old + 1)
+        setChanged(true)
         setContent(e.target.value);
     };
 
-    const handleBlur = () => {
-        const payload = {
-            note: note.id,
-            name: content,
-        };
-        axios.post(`/${note.id}/store_note`, payload)
+    useEffect(() => {
+        console.log("lastWord", lastWord)
+        if (lastWord == "Escape"){
+            setPreview(true)
+            handleBlur()
+        }
+
+        if (lastWord == "Enter"){
+            setPreview(false)
+        }
+    }, [lastWord])
+    
+    const globalHandleKeyDown = (event: any) => {        
+        if (event.key === 'Escape') {
+            setLastWord("Escape")
+        }
+
+        if (event.key === 'Enter') {
+            setLastWord("Enter")
+        }
     };
 
-    console.log(auth.user)
+    const lastLine = () => {
+        if (textareaRef && textareaRef.current) {
+            textareaRef.current.focus();
+
+            textareaRef.current.selectionStart = textareaRef.current.value.length;
+            textareaRef.current.selectionEnd = textareaRef.current.value.length;
+        }
+
+    }
+
+    useEffect(() => {
+        // setTypedCount(0)
+        if (!preview){
+            lastLine()
+        }
+    }, [preview]);
+
+    useEffect(() => {
+        window.addEventListener('keydown', globalHandleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', globalHandleKeyDown);
+        };
+    }, []);
+
+    const handleBlur = () => {
+        if (changed) {
+            const payload = {
+                note: note.id,
+                name: content,
+            };
+            axios.post(`/${note.id}/store_note`, payload).then((d) => {
+                toast.success('Saved', {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: 0,
+                    theme: "dark",
+                    transition: Flip,
+                });
+
+                setChanged(false)
+                // setPreview(true)
+            })
+        }
+
+    };
+
+    
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -47,19 +123,23 @@ export default function Dashboard({ auth, note }: MainProps) {
 
                 <div className='home__main'>
 
-                    <h3>Notes</h3>
-                    <textarea
-                        className='home__textarea'
-                        // rows={30}
-                        spellCheck="false"
-                        value={content}
-                        autoFocus={true}
-                        onChange={handleChange}
-                        onBlur={handleBlur} />
+                    {/* <h3>Notes</h3> */}
 
-                    <div className='box__footer'>
-                        <span>Last Saved : { note.updated_at }</span>
-                    </div>
+                    {preview ?
+                        <div id="display" className='textarea__preview'>
+                            {formatText(content)}
+                        </div> :
+                        <textarea
+                            ref={textareaRef}
+                            className=''
+                            // rows={30}
+                            spellCheck="false"
+                            value={content}
+                            autoFocus={true}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                    }
 
                 </div>
 
