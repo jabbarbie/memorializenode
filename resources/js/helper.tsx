@@ -1,4 +1,5 @@
 const formatText = (text: string) => {
+    if (!text || text.length == 0) return
     return text.split('\n').map((line, index) => {
         if (line.trim().startsWith('#')) {
             return <span key={index} className="text__h1">{line.slice(1).toUpperCase()} <br /></span>;

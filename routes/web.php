@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,8 +20,8 @@ use Inertia\Inertia;
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::post('/{note}/store_note', [HomeController::class, 'store_note']);
-
     Route::resource('/notes', NoteController::class)->only(['index','show']);
+    Route::resource('/projects', ProjectController::class);
 });
 
 // Route::get('/dashboard', function () {

@@ -10,7 +10,7 @@ import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'moment/locale/id';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const dayList = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
 const monthList = [
@@ -44,7 +44,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
 
 
     const fullTime = (dayList[moment().day()]) + ", " + (moment().date()) + " " + (monthList[(moment().month())]) + " " + (moment().year())
-    
+
     return (
         <div id="wrapper">
             <header>
@@ -58,12 +58,15 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                 <nav>
                     <ul>
                         <li><a href="/" className={`${route().current('dashboard') ? 'active' : null}`}>Dasboard</a></li>
-                        <li><a href="">Scrum</a></li>
-                        <li><a href="">Task</a></li>
-                        <li><a href="">Project</a></li>
+                        <li>
+                            <a href="/projects" className={`${route().current('projects.*') ? 'active' : null}`}>Project</a>
+                        </li>
                         <li><a href="/notes" className={`${route().current('notes.*') ? 'active' : null}`}>Notes</a></li>
+                        {/* <li><a href="">Task</a></li> */}
+                        <li><a href="">Scrum</a></li>
                     </ul>
                     <ul className='hide_mobile'>
+                        {route().current('projects.index') && <li><a href='/projects/create'>+</a></li>}
                         <li><a href="" >{fullTime}</a></li>
                         <li><a href="" className='active'>{currentTime.format('HH:mm:ss')}</a></li>
                     </ul>
