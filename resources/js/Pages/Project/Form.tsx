@@ -36,7 +36,7 @@ export default function Show({ auth, project }: MainProps) {
                 </div>
                 <div className='home__main_full'>
                     <div className="home__grid">
-                        <form className="home__form" id="form_create" method='POST' action='/projects'>
+                        <form className="home__form" id="form_create" method='POST' action={data.id ? `/projects/${data.id}/edit` : '/projects'}>
                             <input type="hidden" name="_token" value={csrfToken} />
                             <div className="home__form_group">
                                 <label htmlFor="name">Name</label>
@@ -55,7 +55,7 @@ export default function Show({ auth, project }: MainProps) {
 
                             <div className="home__form_group">
                                 <label htmlFor="link_database">Database</label>
-                                <input type="text" name="link_database" defaultValue={data.link_database} id="link_database" placeholder='http://localhost/phpmyadmin/xyz' />
+                                <input type="text" name="link_database" defaultValue={`http://localhost/phpmyadmin/db_structure.php?db=${data.link_database}`} id="link_database" placeholder='http://localhost/phpmyadmin/xyz' />
                             </div>
 
                             <div className="home__form_group">
