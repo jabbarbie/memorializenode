@@ -1,32 +1,27 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { PageProps, User } from '@/types';
-import '../../sass/home.scss'
+import '../../../sass/home.scss'
 import axios from 'axios';
 
 import { useState } from 'react';
 import { formatText } from '@/helper';
+import { ProjectType } from '@/Helper/types';
 
-interface Project {
-    id: number
-    name: string
-    updated_at: string
-    created_at: string
-    is_done: boolean
-}
 
 interface MainProps {
     auth: {
         user: User
     }
-    // project: {
-    //     data: Project
-    // }
+
+    project: {
+        data: ProjectType
+    }
 }
 
 const csrfToken = document?.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? "";
 console.log(csrfToken)
-export default function ProjectShow({ auth }: MainProps) {
+export default function Show({ auth }: MainProps) {
 
     return (
         <AuthenticatedLayout
@@ -56,7 +51,7 @@ export default function ProjectShow({ auth }: MainProps) {
                                 <label htmlFor="long_name">Long Name</label>
                                 <input type="text" name="long_name" id="long_name" placeholder='Short Name' />
                             </div>
-                            
+
                             <div className="home__form_group">
                                 <label htmlFor="link_database">Database</label>
                                 <input type="text" name="link_database" id="link_database" placeholder='http://localhost/phpmyadmin/xyz' />
@@ -66,7 +61,7 @@ export default function ProjectShow({ auth }: MainProps) {
                                 <label htmlFor="link_repository">Repo</label>
                                 <input type="text" name="link_repository" id="link_repository" placeholder='https://github.com/' />
                             </div>
-                            
+
                             <div className="home__form_group">
                                 <label htmlFor="website_local_link">Website Local</label>
                                 <input type="text" name="website_local_link" id="website_local_link" placeholder='https://plk.my.id' />
@@ -81,10 +76,10 @@ export default function ProjectShow({ auth }: MainProps) {
                                 <label htmlFor="website_public_link">Website</label>
                                 <input type="text" name="website_public_link" id="website_public_link" placeholder='https://plk.my.id' />
                             </div>
-                            
+
                             <div className="home__form_group">
                                 <label htmlFor="color">Color</label>
-                                <input type="text" name="color" id="color" placeholder='#efefef' />
+                                <input type="color" name="color" id="color" placeholder='#efefef' />
                             </div>
 
                             <div className="home__form_group full">
