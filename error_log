@@ -1,0 +1,5 @@
+[22-Jul-2024 00:12:38 Asia/Jakarta] PHP Warning:  require(/home/plkmyid/repositories/memorialize/vendor/autoload.php): Failed to open stream: No such file or directory in /home/plkmyid/repositories/memorialize/artisan on line 9
+[22-Jul-2024 00:12:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/plkmyid/repositories/memorialize/vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/plkmyid/repositories/memorialize/artisan:9
+Stack trace:
+#0 {main}
+  thrown in /home/plkmyid/repositories/memorialize/artisan on line 9

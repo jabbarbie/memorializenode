@@ -1,5 +1,5 @@
 <?php
-echo die("asdasd");
+echo die("sadasd");
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
