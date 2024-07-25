@@ -28,7 +28,7 @@ const monthList = [
     "Desember"
 ];
 
-export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
+export default function Authenticated({ user, header, children, otherMenu }: PropsWithChildren<{ user: User, header?: ReactNode, otherMenu?: ReactNode }>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [currentTime, setCurrentTime] = useState(moment());
 
@@ -67,6 +67,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                     </ul>
                     <ul className='hide_mobile'>
                         {route().current('projects.index') && <li><a href='/projects/create'>+</a></li>}
+                        {otherMenu}
                         <li><a href="" >{fullTime}</a></li>
                         <li><a href="" className='active'>{currentTime.format('HH:mm:ss')}</a></li>
                     </ul>

@@ -126,7 +126,7 @@ export default function Dashboard({ auth, note }: MainProps) {
                     {/* <h3>Notes</h3> */}
 
                     {preview ?
-                        <div id="display" className='textarea__preview' onTouchStart={() => setPreview(false)}>
+                        <div id="display" className='textarea__preview' >
                             {formatText(content)}
                         </div> :
                         <textarea

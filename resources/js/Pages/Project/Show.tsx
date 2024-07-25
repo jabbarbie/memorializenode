@@ -24,7 +24,8 @@ export default function Show({ auth, project }: MainProps) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Note {data.name}</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Project {data.name}</h2>}
+            otherMenu={<li><a href={`/projects/${data.id}/edit`}>Edit</a></li>}
         >
             <Head title={data.name} />
             <div id="home__wrapper">
@@ -88,8 +89,8 @@ export default function Show({ auth, project }: MainProps) {
                             <div className='section__main'>
                                 {data.notulens && data.notulens.map((d) => (
                                     <div>
-                                        { d.date_meeting }
-                                        { d.date_meeting }
+                                        {d.date_meeting}
+                                        {d.date_meeting}
                                     </div>
                                 ))}
                             </div>

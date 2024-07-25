@@ -18,7 +18,7 @@ export interface NotulenType {
 }
 
 export interface ProjectType {
-    id: number
+    id: number | null
     name: string
     short_name: string
     long_name: string

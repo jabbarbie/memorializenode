@@ -11,7 +11,6 @@
         font-size: 1em;
         display: flex;
         justify-content: space-between;
-        // border-top: 1px solid $secondary;
         border-bottom: 1px solid $secondary;
         padding-bottom: .5rem;
         // padding: .5rem 0;
@@ -137,6 +136,7 @@
         display: flex;
         justify-content: space-between;
         gap: 1.5rem;
+
         main {
             width: 75%;
             color: $secondary_50;
@@ -145,12 +145,13 @@
             transition: all .2s;
 
             section {
-                margin-bottom: 3rem;
+                margin-bottom: 1rem;
 
                 .section__header {
                     border-bottom: 1px solid $secondary_10;
                     // margin-bottom: 1rem;
                     padding-bottom: .5rem;
+
                     h3 {
                         font-size: 1.2rem;
                     }
@@ -182,21 +183,38 @@
                 padding-top: .5rem;
                 padding-bottom: .5rem;
                 cursor: pointer;
-                label, p {
+
+                label,
+                p {
                     transition: .5s all;
                 }
 
                 &:hover {
-                    label, p {
+
+                    label,
+                    p {
                         color: $text-highlight;
                         // padding-left: .5rem;
                     }
                 }
 
-                &:last-child{
+                &:last-child {
                     border-bottom: 0;
                 }
             }
+        }
+
+        @media (max-width: $mobile-breakpoint) {
+            flex-direction: column;
+
+            main {
+                width: 100%;
+            }
+
+            aside {
+                width: 100%;
+            }
+
         }
     }
 }
