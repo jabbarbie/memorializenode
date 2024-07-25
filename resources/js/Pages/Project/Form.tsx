@@ -38,9 +38,12 @@ export default function Show({ auth, project }: MainProps) {
                     <div className="home__grid">
                         <form className="home__form" id="form_create" method='POST' action={data.id ? `/projects/${data.id}` : '/projects'}>
                             <input type="hidden" name="_token" value={csrfToken} />
+                            {data.id &&
+                                <input type="hidden" name="_method" value="PUT" />
+                            }
                             <div className="home__form_group">
                                 <label htmlFor="name">Name</label>
-                                <input type="text" name="name" id="name" defaultValue={ data.name } placeholder='Name' required autoFocus />
+                                <input type="text" name="name" id="name" defaultValue={data.name} placeholder='Name' required autoFocus />
                             </div>
 
                             <div className="home__form_group">
