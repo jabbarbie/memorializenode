@@ -44,7 +44,7 @@ export default function Show({ auth, project }: MainProps) {
             otherMenu={
                 <React.Fragment>
                     <li><a href={`/projects/${data.id}/edit`}>Edit</a></li>
-                    <li><button onClick={() => handleDelete(data.id)} className="text-red-500">Delete</button></li>
+                    <li><a onClick={() => handleDelete(data.id)} className="text-red-500" role='button'>Delete</a></li>
                 </React.Fragment>
             }
         >
