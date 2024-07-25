@@ -36,7 +36,7 @@ export default function Show({ auth, project }: MainProps) {
                 </div>
                 <div className='home__main_full'>
                     <div className="home__grid">
-                        <form className="home__form" id="form_create" method='POST' action={data.id ? `/projects/${data.id}/edit` : '/projects'}>
+                        <form className="home__form" id="form_create" method='POST' action={data.id ? `/projects/${data.id}` : '/projects'}>
                             <input type="hidden" name="_token" value={csrfToken} />
                             <div className="home__form_group">
                                 <label htmlFor="name">Name</label>
