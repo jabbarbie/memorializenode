@@ -11,13 +11,13 @@
         font-size: 1em;
         display: flex;
         justify-content: space-between;
-        // border-top: 1px solid $secondary;
         border-bottom: 1px solid $secondary;
         padding-bottom: .5rem;
         // padding: .5rem 0;
 
         h3 {
             font-size: 1.5em;
+            color: $secondary;
         }
 
         .home__header_right {
@@ -76,9 +76,12 @@
                     label,
                     p {
                         font-size: .8rem;
+                        color: inherit;
                     }
 
-
+                    a {
+                        color: red !important;
+                    }
                 }
 
                 &:hover {
@@ -88,9 +91,10 @@
 
                     .box__header {
                         border-bottom: 1px solid white;
-
                     }
                 }
+
+
             }
 
 
@@ -127,8 +131,91 @@
         }
     }
 
-    .home__aside {
-        // width: 30%;
+
+    .home__main_with_aside {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+
+        main {
+            width: 75%;
+            color: $secondary_50;
+            border: 1px solid $secondary;
+            padding: 1rem;
+            transition: all .2s;
+
+            section {
+                margin-bottom: 1rem;
+
+                .section__header {
+                    border-bottom: 1px solid $secondary_10;
+                    // margin-bottom: 1rem;
+                    padding-bottom: .5rem;
+
+                    h3 {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+
+        aside {
+            width: 25%;
+            color: $secondary_50;
+            border: 1px solid $secondary;
+            padding: 0 1rem;
+            transition: all .2s;
+
+            h3 {
+                display: block;
+                font-size: 1.5rem;
+                border-bottom: 1px solid $secondary;
+                padding: 0 0 .5rem 0;
+                margin-bottom: 1rem;
+                color: $primary;
+            }
+
+            .box__form_inline {
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid $secondary_10;
+                // margin-bottom: .5rem;
+                padding-top: .5rem;
+                padding-bottom: .5rem;
+                cursor: pointer;
+
+                label,
+                p {
+                    transition: .5s all;
+                }
+
+                &:hover {
+
+                    label,
+                    p {
+                        color: $text-highlight;
+                        // padding-left: .5rem;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+        }
+
+        @media (max-width: $mobile-breakpoint) {
+            flex-direction: column;
+
+            main {
+                width: 100%;
+            }
+
+            aside {
+                width: 100%;
+            }
+
+        }
     }
 }
 

@@ -2,6 +2,23 @@
     box-sizing: border-box;
 }
 
+.text-note {
+    color: $pastel-blue
+}
+
+.text-scrum {
+    color: $pastel-orange
+}
+
+.text-project {
+    color: $pastel-red
+}
+
+.text-notulen {
+    color: $pastel-green;
+}
+
+
 body {
     padding: 0;
     margin: 0;
@@ -24,6 +41,7 @@ p {
     grid-template-rows: max-content auto max-content;
     height: 100vh;
 }
+
 
 header {
     padding: 0 1rem;
@@ -159,6 +177,11 @@ textarea {
         border: 1px solid $secondary;
     }
 
+}
+
+input[type='color'] {
+    // width: 100%;
+    // height: 100%;
 }
 
 label {

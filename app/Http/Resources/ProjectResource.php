@@ -26,6 +26,7 @@ class ProjectResource extends JsonResource
             'link_repository' => $this->link_repository,
             'link_website' => $this->link_website,
             'notes' => $this->notes,
+            'notulens' => $this->notulen ? NotulenResource::collection($this->notulen) : null
         ];
     }
 }
