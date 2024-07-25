@@ -4,7 +4,7 @@ import { PageProps, User } from '@/types';
 import '../../../sass/home.scss'
 import axios from 'axios';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { formatText } from '@/helper';
 import { ProjectType } from '@/Helper/types';
 import { convertText } from '@/Helper/helper';
@@ -19,13 +19,34 @@ interface MainProps {
     }
 }
 
+
+const handleDelete = (projectId: any) => {
+    window.alert("Cooming Soon")
+    // if (confirm('Are you sure you want to delete this project?')) {
+    //     Inertia.delete(`/projects/${projectId}`, {
+    //         onSuccess: () => {
+    //             alert('Project deleted successfully');
+    //         },
+    //         onError: (errors) => {
+    //             console.error(errors);
+    //             alert('An error occurred while deleting the project');
+    //         }
+    //     });
+    // }
+};
+
 export default function Show({ auth, project }: MainProps) {
     const data = project.data
     return (
         <AuthenticatedLayout
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Project {data.name}</h2>}
-            otherMenu={<li><a href={`/projects/${data.id}/edit`}>Edit</a></li>}
+            otherMenu={
+                <React.Fragment>
+                    <li><a href={`/projects/${data.id}/edit`}>Edit</a></li>
+                    <li><button onClick={() => handleDelete(data.id)} className="text-red-500">Delete</button></li>
+                </React.Fragment>
+            }
         >
             <Head title={data.name} />
             <div id="home__wrapper">
@@ -47,7 +68,12 @@ export default function Show({ auth, project }: MainProps) {
                         </div>
                         <div className="box__form_inline">
                             <label>Database</label>
-                            <p dangerouslySetInnerHTML={{ __html: convertText(data.link_database) }} />
+                            <p>
+                                {data.link_database ?
+                                    <a href={`http://localhost/phpmyadmin/db_structure.php?db=${data.link_database}`} >{data.link_database}</a>
+                                    : '-'}
+                            </p>
+
                         </div>
                         <div className="box__form_inline">
                             <label>Repository</label>
