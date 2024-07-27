@@ -42,7 +42,7 @@ export default function Show({ auth, project }: MainProps) {
                                 <input type="hidden" name="_method" value="PUT" />
                             }
                             <div className="home__form_group">
-                                <label htmlFor="name">Name</label>
+                                <label htmlFor="name">Nam</label>
                                 <input type="text" name="name" id="name" defaultValue={data.name} placeholder='Name' required autoFocus />
                             </div>
 
