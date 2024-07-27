@@ -1,25 +1,11 @@
-import express from 'express';
+var express = require('express');
+var app = express();
 
-const app = express();
-const port = 3000;
-
-// Middleware to parse JSON
-// app.use(express.json());
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
+// Routes
+app.get('/', function (req, res) {
+    res.send('maintance, proses migrate dari laravel ke expressjs...');
 });
 
-// Define a simple route
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-app.get('/about', (req, res) => {
-    res.send('About Page');
-});
-
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-});
+// Listen
+var port = process.env.PORT || 3000;
+app.listen(port); console.log('Listening on localhost:' + port);
