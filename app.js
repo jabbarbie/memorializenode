@@ -1,9 +1,9 @@
-var http = require('http');
-var server = http.createServer(function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    var message = 'It works!\n',
-        version = 'NodeJS ' + process.versions.node + '\n',
-        response = [message, version].join('\n');
-    res.end(response);
+var express = require('express');
+var app = express();
+// Routes
+app.get('/', function (req, res) {
+    res.send('Hello World! Ini adalah Website Express.js pertama saya');
 });
-server.listen();
+// Listen
+var port = process.env.PORT || 3000;
+app.listen(port); console.log('Listening on localhost:' + port);
