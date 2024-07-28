@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.phpunit.cache
 /node_modules
 /public/hot
@@ -17,3 +18,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+=======
+node_modules
+dist
+>>>>>>> 1777ba3c3e386ec9cb0b543d8e8e67fec1ffb02e

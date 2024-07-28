@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+<<<<<<< HEAD
         "allowJs": true,
         "module": "ESNext",
         "moduleResolution": "bundler",
@@ -17,3 +18,16 @@
     },
     "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx", "resources/js/**/*.d.ts"]
 }
+=======
+      "target": "ES6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
+  }
+  
+>>>>>>> 1777ba3c3e386ec9cb0b543d8e8e67fec1ffb02e
